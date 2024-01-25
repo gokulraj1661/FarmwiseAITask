@@ -2,8 +2,21 @@ from flask import request, jsonify
 from __init__ import app, db
 from app.models import Book
 from app.schemas import book_schema, books_schema
+from flask_httpauth import HTTPBasicAuth
+auth = HTTPBasicAuth()
+USER_DATA = {
+   "Username": "password"
+}
+
+@auth.verify_password
+def verify(username, password):
+   if not (username and password):
+       return False
+   return USER_DATA.get(username) == password
+
 
 @app.route('/add',methods=['POST'])
+@auth.login_required
 def add_book():
     title=request.json['title']
     author=request.json['author']
@@ -17,12 +30,14 @@ def add_book():
     return book_schema.jsonify(new_Book)
 
 @app.route('/getall',methods=['GET'])
+@auth.login_required
 def get_all_books():
     all_books=Book.query.all()
     result=books_schema.dump(all_books)
     return jsonify(result)
 
 @app.route('/getbyisbn/<isbn>',methods=['GET'])
+@auth.login_required
 def get_by_isbn(isbn):
     book=Book.query.filter_by(isbn=isbn).first()
     if book:
@@ -31,6 +46,7 @@ def get_by_isbn(isbn):
         return jsonify({"message": "Book not found"}), 404
 
 @app.route('/update/<id>',methods=['PUT'])
+@auth.login_required
 def update_by_id(id):
     book = Book.query.get(id)
     if not book:
@@ -47,6 +63,7 @@ def update_by_id(id):
     return book_schema.jsonify(book)
     
 @app.route('/delete/<id>',methods=['DELETE'])
+@auth.login_required
 def delete_by_id(id):
     book = Book.query.get(id)
     if book:
