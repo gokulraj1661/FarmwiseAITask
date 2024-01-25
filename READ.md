@@ -16,6 +16,8 @@ This is a basic RESTful API for a Bookstore management system developed using th
 - **BasicAuth**
 - **Running the Application**
 
+
+
 ## Installation
 
 1. Clone the repository:
@@ -85,4 +87,4 @@ With the help of HTTPBasicAuth, developed a login page where it allows the endpo
 ```bash
 cd app
 python main.py
-# Check the documentation in the readme file
+
