@@ -3,16 +3,17 @@ This is a Basic Restful api for Bookstore management system developed using Pyth
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Endpoints](#endpoints)
-  - [Add a Book](#add-a-book)
-  - [Get Book by ISBN](#get-book-by-isbn)
-  - [Delete Book by ID](#delete-book-by-id)
-  - [Update Book by ID](#update-book-by-id)
-  - [Get All Books](#get-all-books)
-  - [Protected Endpoint with Basic Authentication](#protected-endpoint-with-basic-authentication)
-- [Running the Application](#running-the-application)
+- **Installation**
+- **Configuration**
+- **Endpoints**
+  - **Add a Book**
+  - **Get Book by ISBN**
+  - **Delete Book by ID**
+  - **Update Book by ID**
+  - **Get All Books**
+  - **Protected Endpoint with Basic Authentication**
+- **BasicAuth**
+- **Running the Application**
 
 ## Installation
 
@@ -20,3 +21,58 @@ This is a Basic Restful api for Bookstore management system developed using Pyth
   ```bash
    git clone https://github.com/gokulraj1661/FarmwiseAITask.git
    cd FarmwiseAITask
+2. Set up a virtual environment:
+  ```bash
+  python -m venv env
+  source env/bin/activate  # On Windows, use `venv\Scripts\activate`
+3. Install dependencies:
+  ```bash
+  pip install -r requirements.txt
+
+## Configuration
+Update the config.py file with your desired configurations, including the database URI and secret keys.
+
+## Endpoints
+## Adding a new book.
+
+- **URL:** `/add`
+- **Method:** `POST`
+- **Parameters:**
+  - `title` (string): Title of the book.
+  - `author` (string): Author of the book.
+  - `isbn` (string): ISBN of the book.
+  - `price` (integer): Price of the book.
+  - `quantity` (integer): Quantity of the book.
+## Retrieving all books.
+
+- **URL:** `/getall`
+- **Method:** `GET`
+
+## Retrieving a specific book by ISBN.
+
+- **URL:** `/getbyisbn/<isbn>`
+- **Method:** `GET`
+
+## Updating book details.
+
+- **URL:** `/update/<id>`
+- **Method:** `PUT`
+- **Parameters:** (Similar to the "Add a Book" endpoint)
+
+## Deleting a book.
+
+- **URL:** `/delete/<id>`
+- **Method:** `DELETE`
+
+## BasicAuth
+
+With the help of HTTPBasicAuth developed a login page where it allows the endpoints access when they pass through login page.
+For this api the username and password are specified here 
+
+- **Username:** `Username`
+- **Password:** `password`
+
+## Running the application
+```bash
+cd app
+python main.py
