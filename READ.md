@@ -33,7 +33,7 @@ This is a Basic Restful api for Bookstore management system developed using Pyth
 Update the config.py file with your desired configurations, including the database URI and secret keys.
 
 ## Endpoints
-## Adding a new book.
+1. Adding a new book.
 
 - **URL:** `/add`
 - **Method:** `POST`
@@ -43,23 +43,23 @@ Update the config.py file with your desired configurations, including the databa
   - `isbn` (string): ISBN of the book.
   - `price` (integer): Price of the book.
   - `quantity` (integer): Quantity of the book.
-## Retrieving all books.
+2. Retrieving all books.
 
 - **URL:** `/getall`
 - **Method:** `GET`
 
-## Retrieving a specific book by ISBN.
+3. Retrieving a specific book by ISBN.
 
 - **URL:** `/getbyisbn/<isbn>`
 - **Method:** `GET`
 
-## Updating book details.
+4. Updating book details.
 
 - **URL:** `/update/<id>`
 - **Method:** `PUT`
 - **Parameters:** (Similar to the "Add a Book" endpoint)
 
-## Deleting a book.
+5. Deleting a book.
 
 - **URL:** `/delete/<id>`
 - **Method:** `DELETE`
