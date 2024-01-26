@@ -28,8 +28,9 @@ This is a basic RESTful API for a Bookstore management system developed using th
 
 2. Set up a virtual environment:
     ```bash
-    python -m venv env
-    source env/bin/activate  # On Windows, use `venv\Scripts\activate`
+    pip install virtualenv
+    virtualenv env
+    source env/bin/activate  # On Windows, use `env\Scripts\activate`
     ```
 
 3. Install dependencies:

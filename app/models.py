@@ -1,12 +1,14 @@
 from __init__ import db
 
 class Book(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     author = db.Column(db.String(100))
     isbn = db.Column(db.String(100), unique=True)
     price = db.Column(db.Integer)
     quantity = db.Column(db.Integer)
+    __table_args__ = {'extend_existing': True}
 
     def __init__(self, title, author, isbn, price, quantity):
         self.title = title
